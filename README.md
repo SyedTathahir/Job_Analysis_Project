@@ -8,16 +8,11 @@ An in-depth analysis of skill demands across top data roles in the United States
 - Scope: US Job Postings
 - Analysis: Skill count and percentage across job roles
 
-## Key Insights
+## 1. What are the most Demanded Skills for the Top 3 most popular Data roles?
 View my notebook with detailed steps here:
 [2_Skill_Demand.ipynb](2_Skills_Count.ipynb)
 ### Skill Landscape Across Data Roles
 ![Visualization of Top Skills for Data Enthusiasts](images/skill_demand_all_data_roles.png)
-#### Data Scientist Skills
-**Top Skills by Count:**
-1. Python (42,379 occurrences)
-2. R (26,022 occurrences)
-3. SQL (Approximately 30,034 occurrences)
 
 **Notable Observations:**
 - Python dominates Data Scientist job market
@@ -25,24 +20,13 @@ View my notebook with detailed steps here:
 - R remains a strong language for statistical analysis
 - SQL is critical for data manipulation
 
-#### Data Analyst Skills
-**Top Skills by Count:**
-1. SQL (34,452 occurrences)
-2. Excel (27,519 occurrences)
-3. Tableau (Significant presence)
-
 **Key Findings:**
 - SQL is the most crucial skill for Data Analysts
 - Excel remains fundamental in data analysis
 - Approximately 50.8% of job postings require SQL
 - 40.6% of roles demand Excel proficiency
 
-#### Data Engineer Skills
-**Emerging Trends:**
-- Python as a primary programming language
-- SQL for database interactions
-- Cloud technologies and big data skills gaining importance
-- Tools like Spark and AWS becoming increasingly relevant
+
 
 ### Skill Demand Patterns
 
@@ -69,21 +53,48 @@ View my notebook with detailed steps here:
    - Data Analysts: Excel in SQL, Excel, Tableau
    - Data Engineers: Learn cloud platforms, big data technologies
 
-## Technologies and Tools Analyzed
-- Programming Languages: Python, R, SQL
-- Data Manipulation: Excel, Pandas
-- Visualization: Matplotlib, Seaborn
-- Cloud/Big Data: Spark, AWS
 
-## Future Research Directions
-- Analyze skill trends over time
-- Explore geographical variations in skill demands
-- Investigate emerging technologies in data roles
+## 2. How are In-Demand Skills trending for Data Analysts ?
 
-## Limitations
-- Analysis based on US job market
-- Dependent on dataset's comprehensiveness
-- Snapshot of current market conditions
+### Visualise Data:
+
+```python
+df_plot = df_DA_US_percent.iloc[:,:5]
+sns.set_theme(style='ticks')
+sns.lineplot(data= df_plot,dashes=False,palette='tab10')
+
+plt.title('Trending Top 10 Skills for Data Analysts in the US')
+plt.ylabel('Likelihood in Job Postings')
+plt.xlabel('2024')
+plt.legend().remove()
+sns.despine()
+
+ax = plt.gca()
+
+from matplotlib.ticker  import PercentFormatter
+ax.yaxis.set_major_formatter(PercentFormatter(decimals=0))
+
+
+for index in range(5):
+    offset = 0.8 if index % 2 == 0 else -0.5
+    plt.text(11.1,df_plot.iloc[-1,index] + offset,df_plot.columns[index])
+
+plt.show()
+
+```
+
+### Results
+
+![Trending Top Skills for Data Analysts in the US](images/Trending_skills.png)
+
+### Insights
+
+- SQL remains the cornerstone skill for data analysts, consistently leading job posting demands, emphasizing its critical role in data-related tasks.
+- Excel shows resilience as a vital tool, with steady demand and a year-end surge, highlighting its continued relevance in the industry.
+- Visualization tools like Tableau and programming languages like Python maintain steady demand, showcasing their importance for modern data workflows.
+- SAS shows niche but growing relevance, suggesting it remains valuable in specific industries.
+- The trends suggest SQL and Excel should be primary focus areas for aspiring analysts, followed by skills like Python and Tableau for versatility.
+- Seasonal variations in demand underscore the importance of staying updated with market trends and diversifying skills to meet industry needs.
 
 ## Acknowledgments
 - Dataset Source: Luke Barousse
