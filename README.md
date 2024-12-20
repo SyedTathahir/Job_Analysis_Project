@@ -96,6 +96,46 @@ plt.show()
 - The trends suggest SQL and Excel should be primary focus areas for aspiring analysts, followed by skills like Python and Tableau for versatility.
 - Seasonal variations in demand underscore the importance of staying updated with market trends and diversifying skills to meet industry needs.
 
+## 4. Salary Analysis for Data Roles
+
+### 4.1 Salary Distribution
+
+
+#### Visualize Data
+
+```python
+sns.boxplot(
+    data=df_US_top6,
+    x='salary_year_avg',
+    y='job_title_short',
+    order=job_order
+)
+
+
+plt.title('Salary Distribution in the United States')
+plt.xlabel('Yearly Salary ($USD)')
+plt.ylabel('')
+ax = plt.gca()
+
+ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda sal,_: f'${int(sal/1000)}k'))
+
+plt.xlim(0,600000)
+
+plt.show()
+```
+### Results
+![salary_distribution](images/salary_analysis.png)
+
+### Insights
+- 
+
+### 4.2 Highest Paid and Most In-Demand Skills for Data Analyst
+
+#### visualise data
+![Highes paid Vs Most In-Demand Skills](images/highestpaid_&_mostinDemand.png)
+
+
+
 ## Acknowledgments
 - Dataset Source: Luke Barousse
 - Platform: Hugging Face Datasets
